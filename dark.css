@@ -10,7 +10,7 @@ html[data-note-dark-enabled="true"] {
   color-scheme: dark;
 
   /* Flat palette: every neutral canvas resolves to the same color. */
-  --note-dark-bg: #101315;
+  --note-dark-bg: var(--note-dark-custom-bg, rgb(16, 19, 21));
   --note-dark-bg-subtle: var(--note-dark-bg);
   --note-dark-surface: var(--note-dark-bg);
   --note-dark-surface-raised: var(--note-dark-bg);

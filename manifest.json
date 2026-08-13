@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "note Dark",
-  "version": "1.0.0",
-  "description": "note.com の記事、コードブロック、編集画面を読みやすいダークテーマにします。",
+  "version": "1.1.0",
+  "description": "note.com の記事とエディタを、RGB調整できるダークテーマにします。",
   "permissions": ["storage"],
   "action": {
     "default_title": "note Dark",
@@ -10,7 +10,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://note.com/*"],
+      "matches": ["https://note.com/*", "https://editor.note.com/*"],
       "css": ["dark.css"],
       "js": ["content.js"],
       "run_at": "document_start",

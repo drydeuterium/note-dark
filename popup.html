@@ -17,14 +17,41 @@
       </div>
 
       <label class="toggle-row" for="enabled">
-        <span>note.com を暗くする</span>
+        <span>note とエディタを暗くする</span>
         <span class="switch">
           <input id="enabled" type="checkbox" checked>
           <span class="slider" aria-hidden="true"></span>
         </span>
       </label>
 
-      <p class="hint">設定は開いている note のタブにもすぐ反映される。</p>
+      <section class="color-panel" aria-labelledby="background-heading">
+        <div class="color-heading">
+          <div>
+            <h2 id="background-heading">背景色</h2>
+            <output id="rgb-value" for="red green blue">rgb(16, 19, 21)</output>
+          </div>
+          <span id="color-preview" class="color-preview" aria-hidden="true"></span>
+        </div>
+
+        <div class="rgb-grid">
+          <label for="red">
+            <span>R</span>
+            <input id="red" name="red" type="number" inputmode="numeric" min="0" max="255" step="1" value="16">
+          </label>
+          <label for="green">
+            <span>G</span>
+            <input id="green" name="green" type="number" inputmode="numeric" min="0" max="255" step="1" value="19">
+          </label>
+          <label for="blue">
+            <span>B</span>
+            <input id="blue" name="blue" type="number" inputmode="numeric" min="0" max="255" step="1" value="21">
+          </label>
+        </div>
+
+        <button id="reset-color" class="reset-button" type="button">初期値に戻す</button>
+      </section>
+
+      <p class="hint">設定は開いている note と editor.note.com にすぐ反映される。明るい背景色では文字が読みづらくなる場合がある。</p>
     </main>
     <script src="popup.js"></script>
   </body>
