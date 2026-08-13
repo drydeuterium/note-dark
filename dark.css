@@ -1,0 +1,331 @@
+/*
+ * note Dark
+ *
+ * note's semantic custom properties are overridden first. Explicit selectors
+ * below cover legacy article styles and hard-coded colors still used by parts
+ * of the reader and editor.
+ */
+
+html[data-note-dark-enabled="true"] {
+  color-scheme: dark;
+
+  /* Flat palette: every neutral canvas resolves to the same color. */
+  --note-dark-bg: #101315;
+  --note-dark-bg-subtle: var(--note-dark-bg);
+  --note-dark-surface: var(--note-dark-bg);
+  --note-dark-surface-raised: var(--note-dark-bg);
+  --note-dark-border: #343c42;
+  --note-dark-border-strong: #4a555d;
+  --note-dark-text: #e7ebed;
+  --note-dark-text-muted: #aab3b9;
+  --note-dark-link: #79bff2;
+  --note-dark-link-hover: #a5d5f7;
+  --note-dark-code: var(--note-dark-bg);
+  --note-dark-code-text: #e8edf0;
+  --note-dark-accent: #62c8a5;
+
+  /* Current note design tokens */
+  --color-background-primary: var(--note-dark-bg);
+  --color-background-secondary: var(--note-dark-bg-subtle);
+  --color-surface-normal: var(--note-dark-surface);
+  --color-surface-quaternary: var(--note-dark-surface-raised);
+  --color-surface-disabled: var(--note-dark-bg);
+  --color-surface-primary: var(--note-dark-bg);
+  --color-surface-primary-reaction: var(--note-dark-bg);
+  --color-surface-secondary: var(--note-dark-bg);
+  --color-surface-tertiary: var(--note-dark-bg);
+  --color-surface-invert: var(--note-dark-bg);
+  --color-text-primary: var(--note-dark-text);
+  --color-text-secondary: rgba(231, 235, 237, 0.7);
+  --color-text-placeholder: rgba(231, 235, 237, 0.48);
+  --color-text-disabled: rgba(231, 235, 237, 0.38);
+  --color-text-clickable-icon: rgba(231, 235, 237, 0.72);
+  --color-text-invert: var(--note-dark-text);
+  --color-border-default: rgba(231, 235, 237, 0.16);
+  --color-border-normal: rgba(231, 235, 237, 0.16);
+  --color-border-weak: #272d31;
+  --color-border-strong: rgba(231, 235, 237, 0.3);
+
+  background: var(--note-dark-bg) !important;
+  scrollbar-color: #4c565d var(--note-dark-bg);
+}
+
+html[data-note-dark-enabled="true"] body,
+html[data-note-dark-enabled="true"] #app,
+html[data-note-dark-enabled="true"] #__next,
+html[data-note-dark-enabled="true"] #__nuxt {
+  color: var(--note-dark-text) !important;
+  background-color: var(--note-dark-bg) !important;
+}
+
+html[data-note-dark-enabled="true"] ::selection {
+  color: #f5f8fa;
+  background: #245e50;
+}
+
+/* Navigation, sidebars, footers, and floating surfaces */
+html[data-note-dark-enabled="true"] :where(
+  .o-navBar,
+  .m-navbarContainer,
+  .o-footer,
+  header[role="banner"],
+  aside,
+  dialog,
+  [role="dialog"],
+  [role="menu"],
+  [role="listbox"],
+  [data-radix-menu-content],
+  [data-radix-popover-content]
+) {
+  color: var(--note-dark-text) !important;
+  background-color: var(--note-dark-surface) !important;
+  border-color: var(--note-dark-border) !important;
+}
+
+/* The authenticated navbar's create menu may reapply --color-text-invert on
+ * an inner element. Scope the dark inverse color to the navbar itself so the
+ * label, pencil, and dropdown arrow stay visible on its light background.
+ */
+html[data-note-dark-enabled="true"] :where(
+  .o-navBar,
+  .m-navbarContainer,
+  header[role="banner"],
+  [class*="navbarContainer"]
+) {
+  --color-text-invert: var(--note-dark-bg);
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .o-navBar,
+  .m-navbarContainer,
+  header[role="banner"],
+  [class*="navbarContainer"]
+) :where(
+  .a-button[data-type="primary"],
+  [data-type="primary"],
+  [class*="postButton"],
+  [class*="PostButton"],
+  a[href*="/notes/new"],
+  button[aria-label*="投稿"]
+) {
+  color: var(--note-dark-bg) !important;
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .o-navBar,
+  .m-navbarContainer,
+  header[role="banner"],
+  [class*="navbarContainer"]
+) :where(
+  .a-button[data-type="primary"],
+  [data-type="primary"],
+  [class*="postButton"],
+  [class*="PostButton"],
+  a[href*="/notes/new"],
+  button[aria-label*="投稿"]
+) :where(svg, path) {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .p-article,
+  .p-article__articleWrapper,
+  .p-article__body,
+  .p-article__content,
+  .o-noteContentText,
+  .note-common-styles__textnote-body
+) {
+  color: var(--note-dark-text) !important;
+  background-color: var(--note-dark-bg) !important;
+}
+
+html[data-note-dark-enabled="true"] .note-common-styles__textnote-body :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dt,
+  dd,
+  figcaption,
+  strong,
+  em
+) {
+  color: inherit !important;
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .o-noteContentHeader__title,
+  .o-noteContentHeader__name,
+  .m-creatorProfile__body,
+  [class*="emptyState"]
+) {
+  color: var(--note-dark-text) !important;
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .o-noteContentHeader__date,
+  .o-noteContentHeader__status,
+  .external-article-widget-description,
+  .external-article-widget-url,
+  figcaption,
+  time
+) {
+  color: var(--note-dark-text-muted) !important;
+}
+
+/* Article links retain a visible focus state and do not affect button labels. */
+html[data-note-dark-enabled="true"] .note-common-styles__textnote-body a:not(.a-button) {
+  color: var(--note-dark-link) !important;
+  text-decoration-color: color-mix(in srgb, var(--note-dark-link) 60%, transparent) !important;
+}
+
+html[data-note-dark-enabled="true"] .note-common-styles__textnote-body a:not(.a-button):hover {
+  color: var(--note-dark-link-hover) !important;
+}
+
+html[data-note-dark-enabled="true"] :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--note-dark-link) !important;
+  outline-offset: 2px !important;
+}
+
+/* Code blocks, including those shown inside the editor. */
+html[data-note-dark-enabled="true"] :where(
+  .note-common-styles__textnote-body pre,
+  pre[data-name="preCode"],
+  .ProseMirror pre,
+  .tiptap pre,
+  [class*="codeBlock"]
+) {
+  color: var(--note-dark-code-text) !important;
+  background: var(--note-dark-code) !important;
+  border: 1px solid #2b3439 !important;
+  box-shadow: none !important;
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .note-common-styles__textnote-body pre,
+  pre[data-name="preCode"],
+  .ProseMirror pre,
+  .tiptap pre,
+  [class*="codeBlock"]
+) code {
+  color: inherit !important;
+  background: transparent !important;
+}
+
+html[data-note-dark-enabled="true"] .m-copyCodeButton,
+html[data-note-dark-enabled="true"] pre button {
+  color: var(--note-dark-code-text) !important;
+}
+
+html[data-note-dark-enabled="true"] .note-common-styles__textnote-body :not(pre) > code,
+html[data-note-dark-enabled="true"] :where(.ProseMirror, .tiptap) :not(pre) > code {
+  padding: 0.12em 0.35em;
+  color: #f0cc8d !important;
+  background: var(--note-dark-bg) !important;
+  border: 1px solid #3b444a;
+  border-radius: 4px;
+}
+
+/* Common syntax-highlighting token names, if note starts emitting them. */
+html[data-note-dark-enabled="true"] :where(.hljs-comment, .hljs-quote) { color: #839099 !important; }
+html[data-note-dark-enabled="true"] :where(.hljs-keyword, .hljs-selector-tag, .token.keyword) { color: #e58eb5 !important; }
+html[data-note-dark-enabled="true"] :where(.hljs-string, .hljs-attribute, .token.string) { color: #b7d887 !important; }
+html[data-note-dark-enabled="true"] :where(.hljs-number, .hljs-literal, .token.number) { color: #d9ad78 !important; }
+html[data-note-dark-enabled="true"] :where(.hljs-title, .hljs-function, .token.function) { color: #82c8ec !important; }
+
+/* Quotes, rules, tables, cards, and embeds */
+html[data-note-dark-enabled="true"] .note-common-styles__textnote-body blockquote,
+html[data-note-dark-enabled="true"] :where(.ProseMirror, .tiptap) blockquote {
+  color: #cbd2d6 !important;
+  background: var(--note-dark-bg-subtle) !important;
+  border-color: #526068 !important;
+}
+
+html[data-note-dark-enabled="true"] hr {
+  border-color: var(--note-dark-border) !important;
+  background-color: var(--note-dark-border) !important;
+}
+
+html[data-note-dark-enabled="true"] :where(table, th, td) {
+  color: var(--note-dark-text) !important;
+  border-color: var(--note-dark-border) !important;
+}
+
+html[data-note-dark-enabled="true"] th {
+  background-color: var(--note-dark-surface-raised) !important;
+}
+
+html[data-note-dark-enabled="true"] td {
+  background-color: var(--note-dark-bg-subtle) !important;
+}
+
+html[data-note-dark-enabled="true"] :where(
+  .external-article-widget,
+  [data-embed-service="note"],
+  [embedded-service="external-article"],
+  [class*="odaiCard"]
+) {
+  color: var(--note-dark-text) !important;
+  background-color: var(--note-dark-surface) !important;
+  border-color: var(--note-dark-border) !important;
+}
+
+html[data-note-dark-enabled="true"] iframe {
+  color-scheme: dark;
+  background-color: var(--note-dark-surface) !important;
+  border-color: var(--note-dark-border) !important;
+}
+
+/* Form controls and the article editor */
+html[data-note-dark-enabled="true"] :where(
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  textarea,
+  select,
+  [contenteditable="true"],
+  .ProseMirror,
+  .tiptap
+) {
+  caret-color: var(--note-dark-text) !important;
+  color: var(--note-dark-text) !important;
+  background-color: var(--note-dark-bg-subtle) !important;
+  border-color: var(--note-dark-border) !important;
+}
+
+html[data-note-dark-enabled="true"] :where(input, textarea)::placeholder {
+  color: var(--note-dark-text-muted) !important;
+  opacity: 0.75;
+}
+
+/* Parts of note still emit inline white backgrounds. Restrict the fallback to
+ * exact white values so that creator-defined colored highlights remain intact.
+ */
+html[data-note-dark-enabled="true"] :where(
+  [style*="background-color: rgb(255, 255, 255)" i],
+  [style*="background-color: #fff" i],
+  [style*="background-color:#fff" i],
+  [style*="background: rgb(255, 255, 255)" i],
+  [style*="background: #fff" i]
+) {
+  background-color: var(--note-dark-surface) !important;
+}
+
+/* Media is intentionally not inverted. Transparent illustrations remain the
+ * creator's original work; only their surrounding canvas becomes dark.
+ */
+html[data-note-dark-enabled="true"] :where(img, picture, video, canvas, svg) {
+  color-scheme: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-note-dark-enabled="true"] *,
+  html[data-note-dark-enabled="true"] *::before,
+  html[data-note-dark-enabled="true"] *::after {
+    scroll-behavior: auto !important;
+  }
+}
